@@ -22,8 +22,13 @@ module.exports = {
         110: "28rem",
       },
       height: {
+        "movie-card-height": "29rem",
+        110: "28rem",
         "partial-screen": "89.7vh",
-        "11/12" : "91.6%"
+        "11/12": "91.6%",
+      },
+      inset: {
+        128: "32rem",
       },
       colors: {
         "CMS-light-black": colors.CMSLightBlack,
@@ -32,7 +37,7 @@ module.exports = {
         "CMS-gray": colors.CMSGray,
         "CMS-monte-carlo": colors.CMSMonteCarlo,
         "CMS-white": colors.CMSWhite,
-        "CMS-mountain-meadow": colors.CMS
+        "CMS-mountain-meadow": colors.CMS,
       },
     },
   },

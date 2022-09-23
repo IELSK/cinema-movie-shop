@@ -1,9 +1,15 @@
 <template>
-  <div></div>
+  <div class="mt-16">
+    <MovieCard />
+  </div>
 </template>
 
 <script lang="ts">
-import { Vue } from "vue-property-decorator";
+import { Options, Vue } from "vue-property-decorator";
+import MovieCard from "../components/cards/MovieCard.vue";
 
+@Options({
+  components: { MovieCard },
+})
 export default class Home extends Vue {}
 </script>

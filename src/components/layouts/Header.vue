@@ -1,6 +1,6 @@
 <template>
   <header
-    class="bg-CMS-monte-carlo h-16 md:h-24 flex justify-between items-center"
+    class="bg-CMS-monte-carlo h-16 md:h-24 flex justify-between items-center fixed top-0 left-0 w-full z-50"
   >
     <img
       class="md:w-32 w-24"
@@ -13,6 +13,7 @@
         v-for="(header, index) in iconHeaders"
         :key="index"
         class="mr-4 md:mr-10"
+        @click="$emit('isOpen', $event)"
       >
         <IconButton
           :buttonIconFile="header.buttonIconFile"
@@ -36,8 +37,12 @@ import IconButton from "../buttons/IconButton.vue";
   },
 })
 export default class Header extends Vue {
-  iconHeaders = [
-    { buttonName: "Coração branco", buttonIconFile: "heart-icon-white.png" },
+  
+  iconHeaders: any = [
+    {
+      buttonName: "Coração branco",
+      buttonIconFile: "heart-icon-white.png",
+    },
     {
       buttonName: "Carrinho de compras",
       buttonIconFile: "cart-white-icon.png",

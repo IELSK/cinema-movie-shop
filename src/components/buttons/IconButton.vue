@@ -1,8 +1,19 @@
 <template>
   <div v-if="hasCounter">
-    <img class="h-8 w-8 md:w-12 md:h-12 cursor-pointer" :src="getIconUrl(buttonIconFile)" :alt="buttonName" />
+    <img
+      class="h-8 w-8 md:w-12 md:h-12 cursor-pointer"
+      :src="getIconUrl(buttonIconFile)"
+      :alt="buttonName"
+      @click="handleClick"
+    />
   </div>
-  <img v-else class="h-8 w-8 md:w-12 md:h-12 cursor-pointer" :src="getIconUrl(buttonIconFile)" :alt="buttonName" />
+  <img
+    v-else
+    class="h-8 w-8 md:w-12 md:h-12 cursor-pointer"
+    :src="getIconUrl(buttonIconFile)"
+    :alt="buttonName"
+    @click="handleClick"
+  />
 </template>
   
   <script lang="ts">
@@ -15,6 +26,10 @@ export default class IconButton extends Vue {
 
   getIconUrl(url: string) {
     return new URL(`../../assets/icons/${url}`, import.meta.url).href;
+  }
+
+  handleClick() {
+    this.$emit("click");
   }
 }
 </script>
