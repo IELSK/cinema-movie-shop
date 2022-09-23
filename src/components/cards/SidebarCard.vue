@@ -1,7 +1,7 @@
 <template>
-  <div class="flex justify-between items-center">
+  <div class="flex justify-between items-center text-sm sm:text-base">
     <img :src="imageUrl" :alt="imageAlt" class="w-12 h-12" />
-    <p class="w-36 break-words">{{ itemName }}</p>
+    <p class="sm:w-36 break-words">{{ itemName }}</p>
     <p v-if="isCart">{{ itemCount }}</p>
     <p>R$ {{ itemPrice.toString().replace(".", ",") }}</p>
 

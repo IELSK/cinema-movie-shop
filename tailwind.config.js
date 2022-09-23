@@ -23,7 +23,7 @@ module.exports = {
       },
       height: {
         "partial-screen": "89.7vh",
-        "11/12" : "91.6vh"
+        "11/12" : "91.6%"
       },
       colors: {
         "CMS-light-black": colors.CMSLightBlack,

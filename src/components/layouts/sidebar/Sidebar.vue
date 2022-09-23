@@ -15,20 +15,20 @@
     "
   >
     <header class="flex justify-between items-center cursor-pointer mb-4">
-      <h1 v-if="isCart">Meu Carrinho</h1>
-      <h1 v-else>Meus Favoritos</h1>
+      <h2 v-if="isCart" class="text-lg sm:text-3xl">Meu Carrinho</h2>
+      <h2 v-else>Meus Favoritos</h2>
       <span class="text-CMS-purple underline">Esvaziar</span>
     </header>
-    <div class="flex flex-col justify-between h-5/6">
+    <div class="flex flex-col justify-between h-11/12 max-h-screen">
       <div>
         <SidebarCard :isCart="isCart"></SidebarCard>
       </div>
       <footer v-if="isCart" class="flex flex-col">
         <div class="flex justify-between">
-          <h1>Total:</h1>
-          <h2>R$ {{ totalValue.toString().replace(".", ",") }}</h2>
+          <h2 class="text-lg sm:text-3xl">Total:</h2>
+          <h1 class="text-base sm:text-4xl">R$ {{ totalValue.toString().replace(".", ",") }}</h1>
         </div>
-        <CMSButton class="self-center" buttonName="Finalizar compra" />
+        <CMSButton class="self-center mb-4" buttonName="Finalizar compra" />
       </footer>
     </div>
   </div>
