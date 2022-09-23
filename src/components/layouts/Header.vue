@@ -9,7 +9,11 @@
     />
     <CMSInput />
     <div class="flex ml-4">
-      <div v-for="(header, index) in iconHeaders" :key="index" class="mr-4 md:mr-10">
+      <div
+        v-for="(header, index) in iconHeaders"
+        :key="index"
+        class="mr-4 md:mr-10"
+      >
         <IconButton
           :buttonIconFile="header.buttonIconFile"
           :buttonName="header.buttonName"
@@ -20,7 +24,7 @@
   </header>
 </template>
   
-  <script lang="ts">
+<script lang="ts">
 import { Options, Vue } from "vue-property-decorator";
 import CMSInput from "../CMSInput.vue";
 import IconButton from "../buttons/IconButton.vue";
@@ -36,7 +40,7 @@ export default class Header extends Vue {
     { buttonName: "Coração branco", buttonIconFile: "heart-icon-white.png" },
     {
       buttonName: "Carrinho de compras",
-      buttonIconFile: "cart-icon.png",
+      buttonIconFile: "cart-white-icon.png",
       hasCounter: true,
     },
   ];

@@ -7,7 +7,19 @@
 
 html,
 body {
-  font-family: Goldman, Arial, sans-serif;
+  font-family: DINNext, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #4b5c6b;
+}
+
+h1 {
+  font-size: 1.7rem;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2f3d4a;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="custom-search md:w-96 w-52 md:placeholder:text-lg">
+  <div class="custom-search md:w-128 w-52 md:placeholder:text-lg">
     <input
       type="text"
       class="custom-search-input"
