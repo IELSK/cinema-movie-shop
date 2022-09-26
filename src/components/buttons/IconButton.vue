@@ -23,6 +23,7 @@ export default class IconButton extends Vue {
   @Prop({ default: "" }) buttonIconFile!: string;
   @Prop({ default: "" }) buttonName!: string;
   @Prop({ default: false }) hasCounter!: boolean;
+  @Prop({ default: false }) isCart!: boolean;
 
   getIconUrl(url: string) {
     return new URL(`../../assets/icons/${url}`, import.meta.url).href;
