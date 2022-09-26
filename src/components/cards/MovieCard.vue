@@ -19,7 +19,7 @@
         <span class="ml-5 pt-1 font-semibold">{{ movieGenreName }}</span>
       </div>
       <span class="font-semibold mt-2">R$ 9,99</span>
-      <CMSButton class="mt-2" buttonName="Adicionar" />
+      <CMSButton @click="addMovieToCart(id)" class="mt-2" buttonName="Adicionar" />
     </div>
   </div>
 </template>
@@ -30,6 +30,8 @@ import CMSButton from "../buttons/CMSButton.vue";
 import { img_url } from '../../helpers/utils'
 import { format } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR';
+import { movies } from "@/helpers/movie";
+import { Movie } from "@/interfaces/movie";
 
 @Options({
   components: {
@@ -49,7 +51,7 @@ export default class MovieCard extends Vue {
   @Prop({
     default: 0,
   })
-  movieRate!: string;
+  movieRate!: number;
   @Prop({
     default: [],
   })
@@ -57,9 +59,26 @@ export default class MovieCard extends Vue {
   @Prop({
     default: "",
   })
-
   movieDate!: Date;
+  @Prop({
+    default: 0,
+  })
+  id!: number;
+  @Prop({ default: [] })
+  homeMovies!: Movie[];
   ptBR: Locale = ptBR;
+
+
+  addMovieToCart(id: number) {
+    let movieToAdd = this.homeMovies.filter((movie: Movie) =>
+      movie.id === id
+    )
+    movieToAdd[0].quantity = 1;
+    movieToAdd[0].price = 9.99;
+
+    this.$store.dispatch("updateMoviesCart", movieToAdd);
+
+  }
 
   get formattedMovieDate() {
     return format(new Date(this.movieDate), "dd 'de' MMMM',' yyyy", {
@@ -117,7 +136,6 @@ export default class MovieCard extends Vue {
     }
   }
 }
-
 </script>
 
 <style scoped>

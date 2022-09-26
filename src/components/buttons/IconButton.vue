@@ -1,19 +1,8 @@
 <template>
   <div v-if="hasCounter">
-    <img
-      class="h-8 w-8 md:w-12 md:h-12 cursor-inherit"
-      :src="getIconUrl(buttonIconFile)"
-      :alt="buttonName"
-      @click="handleClick"
-    />
+    <img class="h-8 w-8 md:w-12 md:h-12 cursor-inherit" :src="getIconUrl(buttonIconFile)" :alt="buttonName" />
   </div>
-  <img
-    v-else
-    class="h-8 w-8 md:w-12 md:h-12 cursor-inherit"
-    :src="getIconUrl(buttonIconFile)"
-    :alt="buttonName"
-    @click="handleClick"
-  />
+  <img v-else class="h-8 w-8 md:w-12 md:h-12 cursor-inherit" :src="getIconUrl(buttonIconFile)" :alt="buttonName" />
 </template>
 
 <script lang="ts">
@@ -25,12 +14,15 @@ export default class IconButton extends Vue {
   @Prop({ default: false }) hasCounter!: boolean;
   @Prop({ default: false }) isCart!: boolean;
 
+
   getIconUrl(url: string) {
     return new URL(`../../assets/icons/${url}`, import.meta.url).href;
   }
 
   handleClick() {
-    this.$emit("click");
-  }
+			this.$emit("click");
+		}
+
+
 }
 </script>

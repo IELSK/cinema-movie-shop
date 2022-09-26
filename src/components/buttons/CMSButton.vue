@@ -1,7 +1,7 @@
 <template>
   <button
-  :class="[disabled ? 'bg-CMS-light-black text-gray-600 cursor-not-allowed' : '']"
-    class="bg-CMS-purple rounded-sm text-white py-2 -mb-14 font-semibold text-lg w-full"
+  :class="[disabled ? 'bg-CMS-gray  text-gray-500 cursor-not-allowed' : '']"
+    class="bg-CMS-purple  rounded-sm text-white py-2 -mb-14 font-semibold text-lg w-full"
     :disabled="disabled"
   >
     {{ buttonName }}
