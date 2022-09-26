@@ -25,8 +25,8 @@
     </div>
   </div>
 </template>
-  
-  <script lang="ts">
+
+<script lang="ts">
 import { Vue, Prop } from "vue-property-decorator";
 
 export default class SidebarCard extends Vue {

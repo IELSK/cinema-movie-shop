@@ -1,7 +1,7 @@
 <template>
   <div v-if="hasCounter">
     <img
-      class="h-8 w-8 md:w-12 md:h-12 cursor-pointer"
+      class="h-8 w-8 md:w-12 md:h-12 cursor-inherit"
       :src="getIconUrl(buttonIconFile)"
       :alt="buttonName"
       @click="handleClick"
@@ -9,14 +9,14 @@
   </div>
   <img
     v-else
-    class="h-8 w-8 md:w-12 md:h-12 cursor-pointer"
+    class="h-8 w-8 md:w-12 md:h-12 cursor-inherit"
     :src="getIconUrl(buttonIconFile)"
     :alt="buttonName"
     @click="handleClick"
   />
 </template>
-  
-  <script lang="ts">
+
+<script lang="ts">
 import { Vue, Prop } from "vue-property-decorator";
 
 export default class IconButton extends Vue {
