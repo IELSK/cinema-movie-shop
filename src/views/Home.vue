@@ -4,25 +4,27 @@
       ? 'mr-128'
       : 'md:mx-20',
   ]">
-    <MovieCard v-for="(movie, index) in movies" :movieName="movie.title" :movieRate="movie.vote_average"
-      :imageUrl="movie.backdrop_path" :movieGenre="movie.genre_ids" :movieDate="movie.release_date" />
-    <ClipLoader v-if="loadingMorePosts" class="place-self-center flex content-center" :loading="true" size="4rem" color="#2E2E2E"></ClipLoader>
+    <MovieCard v-for="(movie) in movies" :movieName="movie.title" :movieRate="movie.vote_average"
+      :imageUrl="movie.backdrop_path" :homeMovies="movies" :id="movie.id" :movieGenre="movie.genre_ids" :movieDate="movie.release_date" />
+    <ClipLoader v-if="loadingMorePosts" class="place-self-center flex content-center" :loading="true" size="4rem"
+      color="#2E2E2E"></ClipLoader>
   </div>
 </template>
 
 <script lang="ts">
 import { Movie } from "@/interfaces/movie";
-import { Options, Vue, Prop } from "vue-property-decorator";
+import { Options, Vue } from "vue-property-decorator";
 import ClipLoader from "vue-spinner/src/ClipLoader.vue";
 import MovieCard from "../components/cards/MovieCard.vue";
 import { getPopularMovies } from "@/api/movie";
+import { movies } from "@/helpers/movie";
 
 @Options({
   components: { MovieCard, ClipLoader },
 })
 export default class Home extends Vue {
 
-  movies: Movie[] = [];
+  movies: Movie[] = movies;
   pageFeed = 1;
   loadingMorePosts = false;
 

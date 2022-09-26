@@ -7,7 +7,7 @@
     class="fixed z-50 bg-white md:w-128 w-screen h-full top-0 right-0 border-2 border-solid mt-16 md:mt-24 px-4 pt-4">
     <header class="flex justify-between items-center mb-4">
       <h2 v-if="isCart" class="text-lg sm:text-3xl">Meu Carrinho</h2>
-      <h2 v-else>Meus Favoritos</h2>
+      <h2 v-else class="text-lg sm:text-3xl">Meus Favoritos</h2>
       <span class="text-CMS-purple cursor-pointer underline">Esvaziar</span>
     </header>
     <div class="flex flex-col justify-between h-full">
