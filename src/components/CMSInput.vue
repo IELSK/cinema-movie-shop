@@ -36,7 +36,6 @@ export default class CMSInput extends Vue {
 
   @Watch("value")
   valueChange() {
-    console.log("disparou")
     this.inputChange(undefined);
   }
 

@@ -1,13 +1,10 @@
 <template>
-  <div
-  v-if="canOpenSidebar"
-    :class="[
-      isSidebarOpen
-        ? 'ease-in-out duration-300'
-        : 'ease-in-out translate-x-full duration-300',
-    ] "
-    class="fixed z-50 bg-white md:w-128 w-screen h-full top-0 right-0 border-2 border-solid mt-16 md:mt-24 px-4 pt-4"
-  >
+  <div v-if="canOpenSidebar" :class="[
+    isSidebarOpen
+      ? 'ease-in-out duration-300'
+      : 'ease-in-out translate-x-full duration-300',
+  ] "
+    class="fixed z-50 bg-white md:w-128 w-screen h-full top-0 right-0 border-2 border-solid mt-16 md:mt-24 px-4 pt-4">
     <header class="flex justify-between items-center mb-4">
       <h2 v-if="isCart" class="text-lg sm:text-3xl">Meu Carrinho</h2>
       <h2 v-else>Meus Favoritos</h2>
@@ -31,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Prop, Options } from "vue-property-decorator";
+import { Vue, Options } from "vue-property-decorator";
 import SidebarCard from "../cards/SidebarCard.vue";
 import CMSButton from "@/components/buttons/CMSButton.vue";
 
@@ -39,12 +36,19 @@ import CMSButton from "@/components/buttons/CMSButton.vue";
   components: { SidebarCard, CMSButton },
 })
 export default class Sidebar extends Vue {
-  @Prop({ default: true }) isCart!: boolean;
-  @Prop({ default: false }) isSidebarOpen!: boolean;
+
   totalValue: number = 19.98;
 
+  get isSidebarOpen() {
+    return this.$store.state.isSidebarOpen;
+  }
+
+  get isCart() {
+    return this.$store.state.isCart;
+  }
+
   get canOpenSidebar() {
-    return this.$route.meta.canOpenSidebar
+    return this.$route.meta.canOpenSidebar;
   }
 
   redirectToCheckout() {

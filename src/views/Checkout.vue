@@ -17,8 +17,8 @@
             R$ {{ totalValue.toString().replace(".", ",") }}
           </h1>
         </div>
-        <CMSButton class="self-center mt-10 mb-4" @click="$emit('modalOn', true)" buttonName="Finalizar"
-          :disabled="buttonDisabled" />
+        <CMSButton :disabled="buttonDisabled" class="self-center mt-10 mb-6" @click="turnOnModal" buttonName="Finalizar"
+           />
       </div>
     </div>
   </div>
@@ -31,13 +31,18 @@ import CheckoutTable from "@/components/table/CheckoutTable.vue";
 import CMSButton from "@/components/buttons/CMSButton.vue";
 import { hasMissingRequiredKeys } from "../helpers/utils";
 import { user } from "../helpers/form"
+import { useStore } from "vuex";
 
 @Options({ components: { CMSInput, CheckoutTable, CMSButton } })
 export default class Checkout extends Vue {
   @Prop({ default: "" }) value!: string;
   totalValue: number = 19.98;
-
+  store = useStore()
   formData = user;
+
+  turnOnModal() {
+    this.$store.dispatch("updateIsModalOn", true);
+  }
 
   formHeaders = [
     {

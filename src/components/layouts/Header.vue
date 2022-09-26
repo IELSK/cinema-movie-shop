@@ -4,14 +4,12 @@
       @click="redirectToHome(); $emit('turnSidebarOff', false);;" />
     <CMSInput inputType="search" inputPlaceholder="Procure um filme!" />
     <div class="flex ml-4">
-      <div v-for="(header, index) in iconHeaders" :key="index" :class="[
+      <IconButton v-for="(header, index) in iconHeaders" :key="index" :class="[
         canOpenSidebar
           ? 'cursor-pointer'
           : 'cursor-not-allowed',
-      ]" class="mr-4 md:mr-10" @click="$emit('isSidebarOpen', $event)">
-        <IconButton :buttonIconFile="header.buttonIconFile" :buttonName="header.buttonName"
-          :hasCounter="header.hasCounter" />
-      </div>
+      ]" class="mr-4 md:mr-10" @click="toggleSidebarOpen(); setIsCart(header.isCart);" :buttonIconFile="header.buttonIconFile"
+       :buttonName="header.buttonName" :hasCounter="header.hasCounter" />
     </div>
   </header>
 </template>
@@ -44,6 +42,20 @@ export default class Header extends Vue {
   get canOpenSidebar() {
     return this.$route.meta.canOpenSidebar
   }
+
+  setIsCart(isCart: boolean) {
+    if (isCart) {
+      this.$store.dispatch("updateIsCart", true);
+    } else {
+      this.$store.dispatch("updateIsCart", false);
+    }
+  }
+
+  toggleSidebarOpen() {
+    let newSidebarState = !this.$store.state.isSidebarOpen;
+    this.$store.dispatch("updateIsSidebarOpen", newSidebarState);
+  }
+
 
   redirectToHome() {
     this.$router.push("/");

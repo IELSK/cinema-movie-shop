@@ -21,7 +21,6 @@ import { getPopularMovies } from "@/api/movie";
   components: { MovieCard, ClipLoader },
 })
 export default class Home extends Vue {
-  @Prop({ default: false }) isSidebarOpen!: boolean;
 
   movies: Movie[] = [];
   pageFeed = 1;
@@ -70,6 +69,10 @@ export default class Home extends Vue {
       this.getMovies(this.pageFeed);
       return;
     }
+  }
+
+  get isSidebarOpen() {
+    return this.$store.state.isSidebarOpen;
   }
 
   mounted(): void {
