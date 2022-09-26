@@ -3,8 +3,8 @@ import Home from "../views/Home.vue";
 import Checkout from "../views/Checkout.vue";
 
 const routes = [
-  { path: "/", component: Home },
-  { path: "/checkout", component: Checkout },
+  { path: "/", component: Home, meta: { canOpenSidebar : true } },
+  { path: "/checkout", component: Checkout, meta: { canOpenSidebar : false } },
 ];
 
 const router = createRouter({

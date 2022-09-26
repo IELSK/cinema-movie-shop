@@ -1,36 +1,35 @@
 <template>
-  <div class="w-64 h-movie-card-height border-2">
+  <div class="w-64 md:w-96 h-96 md:h-movie-card-height border-2 md:mx-5 mx-5 mb-20">
     <div class="h-3/5 relative">
-      <img
-        src="../../assets/icons/heart-icon-gray.png"
-        alt="Ícone de favorito"
-        class="absolute right-0 cursor-pointer w-16 h-16"
-      />
-      <img :src="imageUrl" alt="Imagem do filme" class="h-full" />
-      <div class="absolute mx-auto left-0 right-0 text-center bottom-0">{{ movieDate }}</div>
+      <img src="../../assets/icons/heart-icon-white.png" alt="Ícone de favorito"
+        class="absolute right-0 cursor-pointer w-12 h-12" />
+      <img :src="fullMovieImageUrl" alt="Imagem do filme" class="h-full" />
+      <span
+        class="absolute letter-shadow text-white font-bold drop-shadow-2xl mx-auto left-0 right-0 text-center bottom-0">
+        {{ formattedMovieDate }}
+      </span>
     </div>
-    <div class="flex flex-col text-center items-center">
-      <h1 class="w-4/5 text-xl mt-3">{{ movieName }}</h1>
+    <div class="flex flex-col h-2/5 text-center justify-evenly items-center">
+      <h1 class="w-4/5 md:text-xl mt-3">{{ movieName }}</h1>
       <div class="flex justify-center items-center">
         <div class="flex w-full justify-center items-center">
-          <img
-            src="../../assets/icons/star-icon.png"
-            alt="Ícone de favorito"
-            class="w-6 h-6 mx-1"
-          />
+          <img src="../../assets/icons/star-icon.png" alt="Ícone de favorito" class="w-6 h-6 mx-1" />
           <span class="font-bold text-lg mt-1">{{ movieRate }}</span>
         </div>
-        <span class="ml-5 pt-1 font-semibold">{{ movieGenre }}</span>
+        <span class="ml-5 pt-1 font-semibold">{{ movieGenreName }}</span>
       </div>
       <span class="font-semibold mt-2">R$ 9,99</span>
       <CMSButton class="mt-2" buttonName="Adicionar" />
     </div>
   </div>
 </template>
-  
-  <script lang="ts">
+
+<script lang="ts">
 import { Vue, Prop, Options } from "vue-property-decorator";
 import CMSButton from "../buttons/CMSButton.vue";
+import { img_url } from '../../helpers/utils'
+import { format } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR';
 
 @Options({
   components: {
@@ -40,24 +39,89 @@ import CMSButton from "../buttons/CMSButton.vue";
 export default class MovieCard extends Vue {
   @Prop({
     default:
-      "https://thumbs.dreamstime.com/b/imagem-de-fundo-bonita-do-c%C3%A9u-da-natureza-64743176.jpg",
+      "",
   })
   imageUrl!: string;
   @Prop({
-    default: "A Volta dos que não foram",
+    default: "",
   })
   movieName!: string;
   @Prop({
-    default: 7,
+    default: 0,
   })
   movieRate!: string;
   @Prop({
-    default: "Terror",
+    default: [],
   })
-  movieGenre!: string;
+  movieGenre!: number[];
   @Prop({
-    default: "7 de Janeiro, 2019",
+    default: "",
   })
-  movieDate!: string;
+
+  movieDate!: Date;
+  ptBR: Locale = ptBR;
+
+  get formattedMovieDate() {
+    return format(new Date(this.movieDate), "dd 'de' MMMM',' yyyy", {
+      locale: ptBR
+    })
+  }
+
+  get fullMovieImageUrl() {
+    return `${img_url}${this.imageUrl}`
+  }
+
+  get movieGenreName() {
+    switch (this.movieGenre[0]) {
+      case 28:
+        return "Ação";
+      case 12:
+        return "Aventura";
+      case 16:
+        return "Animação";
+      case 35:
+        return "Comédia";
+      case 80:
+        return "Crime";
+      case 99:
+        return "Documentário";
+      case 18:
+        return "Drama";
+      case 10751:
+        return "Família";
+      case 14:
+        return "Fantasia";
+      case 36:
+        return "História";
+      case 27:
+        return "Terror";
+      case 10402:
+        return "Música";
+      case 9648:
+        return "Mistério";
+      case 10749:
+        return "Romance";
+      case 878:
+        return "Ficção científica"
+      case 10770:
+        return "Cinema TV"
+      case 53:
+        return "Thriller"
+      case 10752:
+        return "Guerra"
+      case 37:
+        return "Faroeste"
+
+      default:
+        return this.movieGenre[0] || "";
+    }
+  }
 }
+
 </script>
+
+<style scoped>
+.letter-shadow {
+  -webkit-text-stroke: 1px black;
+}
+</style>

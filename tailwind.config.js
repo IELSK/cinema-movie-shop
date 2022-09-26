@@ -27,6 +27,9 @@ module.exports = {
         "partial-screen": "89.7vh",
         "11/12": "91.6%",
       },
+      margin: {
+        128: "32rem",
+      },
       inset: {
         128: "32rem",
       },
@@ -38,6 +41,10 @@ module.exports = {
         "CMS-monte-carlo": colors.CMSMonteCarlo,
         "CMS-white": colors.CMSWhite,
         "CMS-mountain-meadow": colors.CMS,
+      },
+      zIndex: {
+        100: 100,
+        80: 80,
       },
     },
   },
